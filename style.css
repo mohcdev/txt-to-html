@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    color: #101020;
 }
 
 .container {
@@ -12,27 +13,66 @@ body {
     margin: 2rem auto 0;
 }
 
+h2 {
+    text-align: center;
+}
+
 .wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 2rem;
 }
 
+.wrapper>textarea, .wrapper div {
+    width: 48%;
+}
 
 textarea {
-    width: 48%;
     height: 200px;
     resize: none;
     border-radius: 5px;
     border: 1px solid transparent;
     outline: none;
     box-shadow: 0 0 5px #aaa;
-    padding: 5px; 
+    padding: 5px;
     transition: border 0.3s;
+
 }
+
+textarea::placeholder {
+    text-transform: capitalize;
+}
+
 textarea:hover {
     border-color: #aaa;
 }
+
+.wrapper div textarea {
+    width: 100%;
+}
+
+.wrapper div {
+    position: relative;
+}
+
+.wrapper div span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: capitalize;
+    background-color: crimson;
+    padding: 5px;
+    color: #fff;
+    border-radius: 5px;
+    display: none;
+}
+
+div span.displayError {
+    display: block;
+}
+
 
 #convert {
     padding: 8px 0;
@@ -45,3 +85,17 @@ textarea:hover {
     border: 1px solid #aaa;
 }
 
+nav {
+    box-shadow: 0 2px 5px #101020;
+    padding: 1rem;
+}
+
+.nav-wrapper {
+    width: 90%;
+    max-width: 1200px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
