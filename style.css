@@ -1,0 +1,92 @@
+* {
+    font-family: arial;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    padding: 1rem;
+    position: relative;
+}
+
+h2 {
+    text-transform: capitalize;
+}
+
+label {
+    display: block;
+}
+
+textarea {
+    width: 600px;
+    height: 180px;
+    resize: none;
+    border-radius: 5px;
+    border: 1px solid #555;
+    outline: none;
+    padding: 5px;
+
+    box-shadow: 0 0 5px #ccc;
+}
+
+textarea::placeholder {
+    text-transform: capitalize;
+}
+
+#open, #generate, #open_again, #convert {
+    padding: 8px 3rem;
+    font-size: 1rem;
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px 0;
+}
+
+#doubles, #result {
+    border: 2px solid;
+}
+
+#doubles, span.doubles {
+    border-color: #f56262;
+}
+
+#result, span.result {
+    border-color: #84db6f;
+}
+
+#open {
+    display: block;
+}
+
+#open:hover, #generate:hover, #open_again:hover {
+    background: #e4effb;
+}
+
+
+div span {
+    width: 30px;
+    background: #fff;
+    padding: 8px 1.5rem;
+    border-radius: 5px;
+    margin: 0 5px;
+    border: 2px solid #222;
+}
+
+.target {
+    position: absolute;
+    right: 0;
+    top: 80px;
+    padding: 5px 1rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: 0 0 5px #ccc;
+    text-align: center;
+}
+
+#tohtml {
+    padding: 1rem;
+}
