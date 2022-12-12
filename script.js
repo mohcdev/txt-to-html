@@ -3,6 +3,13 @@ const myHtml = document.querySelector('#html')
 const convertBtn = document.querySelector('#convert')
 const err = document.querySelector('.err')
 
+//
+const spamKeywordsContainer = document.querySelector('.Spam_Keywords')
+const nothingFound =  document.querySelector('.Spam_Keywords p')
+const spamBtn  = document.querySelector("#Spam")
+const removeBtn  = document.querySelector("#Remove")
+
+
 convertBtn.addEventListener('click', () => {
     if (myTxt.value.trim() == '') {
         displayError()
@@ -25,12 +32,87 @@ convertBtn.addEventListener('click', () => {
     console.log(newtxt.indexOf('\n'))
 })
 
-
 document.querySelectorAll('textarea').forEach(elem => elem.addEventListener('focus', (e) => e.target.select()))
 
 myTxt.addEventListener('focus', (e) => err.classList.remove('displayError'))
 
-
 const displayError = () => {
     err.classList.add('displayError')
 }
+
+const spamArray = [ 'Debt','Deal','millions','Offer','offers','Discount',
+'Credit','Trial','Warranty','Unlimited','income','financial','Ad','ads',
+'Certified','Billing','Loans','financial','Cheap','price','now','get',
+'call','today ','Extra','dollar','100%','Billion','income','Cash','price',
+'bucks','bonus','Cents','earn','Giveaway','gift','membership','investment',
+'refund','trial','sales','winner','profit','earnings','Prize','Unlimited',
+'Loans','Valium','Weight loss','spam','Vicodin','Viagra','promotion','rates',
+'deal','money','earn', 'amazing', 'click', 'Weight','Bargain']
+
+let foundKeywords = []
+
+spamBtn.addEventListener('click', () => {
+
+    checkText()
+
+    let splitedTxt = myTxt.value.split(' ')
+
+    foundSpamKeywords(splitedTxt)
+
+    //remove child nodes : spam keywords 
+    const colors = ['#f5b2b2','#b2dcf5','#b2f5b7','#e5f5b2','#646e9f','#f5beb2','#f4b2f5']
+
+    Array.from(document.querySelectorAll('.Spam_Keywords span'), i => i.remove())
+
+    for (let i = 0; i < foundKeywords.length; i++) {
+        let randomColor = Math.floor(Math.random() * colors.length)
+        let span = document.createElement('span')
+        span.textContent = foundKeywords[i].value
+        span.style.backgroundColor = colors[randomColor] 
+        spamKeywordsContainer.appendChild(span)
+    }
+
+    !foundKeywords.length ? nothingFound.classList.add('visible') :nothingFound.classList.remove('visible')
+})
+
+//remove spam keywords btn
+removeBtn.addEventListener('click', () => {
+
+    checkText()
+
+    for (let i = 0; i < foundKeywords.length; i++) {
+        myTxt.value = myTxt.value.replaceAll(foundKeywords[i].value,'')
+    }
+})
+
+//check for spam keywords
+const foundSpamKeywords = (splitedTxt) => {
+    foundKeywords = []
+
+    for (let i = 0; i < splitedTxt.length; i++) {
+        let keyword = {
+            value : '',
+            index : null
+        }
+
+        if(spamArray.includes(splitedTxt[i])){
+            keyword.value = splitedTxt[i]
+            keyword.index = i
+            foundKeywords.push(keyword)
+        }
+    }
+    console.log(foundKeywords)
+}
+
+//check if the input field is not empty
+const checkText = () => {
+    if(myTxt.value.trim() == '') {
+        displayError()
+        return
+    }
+}
+
+
+myTxt.addEventListener('change', ()=>{
+    nothingFound.classList.remove('visible')
+})

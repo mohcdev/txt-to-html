@@ -1,10 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 * {
     font-family: arial;
+    --dark:#101020;
 }
 
 body {
     margin: 0;
     color: #101020;
+}
+
+nav {
+    box-shadow: 0 2px 5px var(--dark);
+    padding: 1rem;
+}
+
+.nav-wrapper {
+    width: 90%;
+    max-width: 1200px;
 }
 
 .container {
@@ -13,8 +25,11 @@ body {
     margin: 2rem auto 0;
 }
 
-h2 {
+h1 {
     text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    color: var(--dark);
+    font-size: 2rem;
 }
 
 .wrapper {
@@ -37,7 +52,6 @@ textarea {
     box-shadow: 0 0 5px #aaa;
     padding: 5px;
     transition: border 0.3s;
-
 }
 
 textarea::placeholder {
@@ -73,29 +87,72 @@ div span.displayError {
     display: block;
 }
 
-
-#convert {
-    padding: 8px 0;
+.btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btns button{   
+    padding: 1rem 0;
     font-size: 1rem;
     background: #fff;
     border-radius: 5px;
     cursor: pointer;
     margin: 15px 0;
-    width: 100%;
-    border: 1px solid #aaa;
+    width: 32%;
+    border: 1px solid transparent;
+    position: relative; 
+    box-shadow: 0 0 5px #aaa; 
+    transition: box-shadow 0.3s;
 }
 
-nav {
-    box-shadow: 0 2px 5px #101020;
-    padding: 1rem;
+.btns button:hover {
+     box-shadow: 0 0 5px #888; 
 }
 
-.nav-wrapper {
-    width: 90%;
-    max-width: 1200px;
+.btns button::before{
+    content:"";
+    width: 20px;
+    height: 20px;
+    background: #646e9f;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    color: #fff;
+}
+.btns button:nth-child(1)::before{
+    content:"3";
+}
+.btns button:nth-child(2)::before{
+    content:"1";
+}
+.btns button:nth-child(3)::before{
+    content:"2";
 }
 
 a {
     text-decoration: none;
     color: inherit;
+}
+
+.Spam_Keywords p{
+    background: #f9a3a3;
+    padding: 15px;
+    color: #232346;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+    display: none;
+}
+
+.Spam_Keywords p.visible{
+    display: block;
+}
+.Spam_Keywords span{
+    padding:5px;
+    background-color:#eee;
+    border-radius: 5px;
+    margin:0 5px;
 }
