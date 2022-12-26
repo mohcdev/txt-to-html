@@ -26,9 +26,9 @@ convertBtn.addEventListener('click', () => {
     console.log(splitedTxt)
     let newtxt = splitedTxt.join(' ')
     console.log(newtxt)
-    newtxt.replace('\n', '</p><p>')
-    let newp = newtxt.replace(/\n\n/g, '</p><p>')
-    myHtml.value = newp.replace(/\n/g, '<br>')
+    newtxt.replace('\n', '</p>\n<p>')
+    myHtml.value = newtxt.replace(/\n\n/g, '</p>\n<p>')
+   // myHtml.value = newp.replace(/\n/g, '\n')
     console.log(newtxt.indexOf('\n'))
 })
 
@@ -40,22 +40,32 @@ const displayError = () => {
     err.classList.add('displayError')
 }
 
-const spamArray = [ 'Debt','Deal','millions','Offer','offers','Discount',
-'Credit','Trial','Warranty','Unlimited','income','financial','Ad','ads',
-'Certified','Billing','Loans','financial','Cheap','price','now','get',
-'call','today ','Extra','dollar','100%','Billion','income','Cash','price',
-'bucks','bonus','Cents','earn','Giveaway','gift','membership','investment',
-'refund','trial','sales','winner','profit','earnings','Prize','Unlimited',
-'Loans','Valium','Weight loss','spam','Vicodin','Viagra','promotion','rates',
-'deal','money','earn', 'amazing', 'click', 'Weight','Bargain']
+const spamArray = [ 'Debt','Deal','millions','Offer','offers','credit','Discount',
+'Credit','Trial','Warranty','Unlimited','income','financial','Ad','ads','Prices','%','$',
+'Certified','Billing','Loans','performance','financial','Cheap','price','now','get',
+'call','today ','Extra','dollar','Billion','income','Cash','price','sales',
+'bucks','bonus','Cents','earn','Giveaway','gift','membership','investment', 'free',
+'refund','trial','sales','winner','profit','earnings','Prize','limited','freedom','money','earn', 'amazing', 'click', 'Weight','Bargain', 'thousands','opportunity', 'only',
+'action','now', 'success', 'great', 'life', 'off', 'all', 'human']
 
 let foundKeywords = []
 
+
+//split the text by space
 spamBtn.addEventListener('click', () => {
 
     checkText()
 
-    let splitedTxt = myTxt.value.split(' ')
+    let splitedPhrases = myTxt.value.split('\n')
+
+     let splitedTxt = []
+     //-----
+     //-----
+     //-----
+
+     splitedPhrases.forEach(phrase => phrase.trim().split(' ').forEach(item => splitedTxt.push(item)) )
+      
+    console.log(splitedTxt)
 
     foundSpamKeywords(splitedTxt)
 
@@ -81,7 +91,7 @@ removeBtn.addEventListener('click', () => {
     checkText()
 
     for (let i = 0; i < foundKeywords.length; i++) {
-        myTxt.value = myTxt.value.replaceAll(foundKeywords[i].value,'')
+        myTxt.value = myTxt.value.replaceAll(foundKeywords[i].value,'confirmation')
     }
 })
 
@@ -95,10 +105,11 @@ const foundSpamKeywords = (splitedTxt) => {
             index : null
         }
 
-        if(spamArray.includes(splitedTxt[i])){
+        if(spamArray.includes(splitedTxt[i].toLowerCase()) || spamArray.includes(splitedTxt[i].toLowerCase().substring(0, splitedTxt[i].length-1))){
             keyword.value = splitedTxt[i]
             keyword.index = i
             foundKeywords.push(keyword)
+            console.log(keyword)
         }
     }
     console.log(foundKeywords)
@@ -111,7 +122,6 @@ const checkText = () => {
         return
     }
 }
-
 
 myTxt.addEventListener('change', ()=>{
     nothingFound.classList.remove('visible')
