@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ipstools.css">
+
+    <title>ip Tools</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <div class="links">
+                <a href="https://mohcinedev.github.io/bucket/" target="_blank">Generate Bucket</a>
+                <a href="/ipTools.html">IP Tools</a>
+            </div>
+        </div>
+    </nav>
+    <section class="wrapper ips">
+        <div class="textareas">
+            <textarea name="" id="ips" placeholder="target ips" cols="30" rows="10"></textarea>
+            <textarea name="" placeholder="list1" class="list1" id="ips" cols="30" rows="10"></textarea>
+            <textarea name="" placeholder="list2" class="list2" id="ips" cols="30" rows="10"></textarea>
+        </div>
+        <div class="controls">
+
+            <button class="split">Split</button>
+        </div>
+    </section>
+    <script>
+
+        const targetIps = document.querySelector('#ips')
+        const list1Textarea = document.querySelector('.list1')
+        const list2Textarea = document.querySelector('.list2')
+        const splitBtn = document.querySelector('button.split')
+
+
+        splitBtn.addEventListener('click', splitIps)
+
+
+        function splitIps() {
+            const ips = targetIps.value
+            let list1 = '', list2 = ''
+
+            if (!targetIps.value) {
+                alert('enter your ips!!')
+                return
+            }
+
+            ips.split('\n').forEach((element, index) => {
+                if (index % 2 == 0) {
+                    list1 += `${element}\n`
+                }
+                else
+                    list2 += `${element}\n`
+            });
+
+            list1Textarea.value = list1
+            list2Textarea.value = list2
+        }
+        
+        list1Textarea.addEventListener('click', e => e.target.select())
+        list2Textarea.addEventListener('click', e => e.target.select())
+
+        
+    </script>
+</body>
+
+</html>

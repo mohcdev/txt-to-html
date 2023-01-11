@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 * {
     font-family: arial;
-    --dark:#101020;
+    --dark: #101020;
 }
 
 body {
@@ -11,14 +12,38 @@ body {
 
 nav {
     box-shadow: 0 2px 5px var(--dark);
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 }
 
-.nav-wrapper {
+.wrapper {
     width: 90%;
     max-width: 1200px;
+    margin: auto;
+    
 }
 
+.links a {
+    margin: 0 1rem;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding: 5px 0;
+}
+
+.links a::before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    transition: left 0.5s;
+}
+.links a:hover::before{
+    left: 0;
+    
+}
 .container {
     width: 90%;
     max-width: 1200px;
@@ -32,14 +57,14 @@ h1 {
     font-size: 2rem;
 }
 
-.wrapper {
+.container .txt_wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 2rem;
 }
 
-.wrapper>textarea, .wrapper div {
+.txt_wrapper>textarea, .txt_wrapper div {
     width: 48%;
 }
 
@@ -62,15 +87,15 @@ textarea:hover {
     border-color: #aaa;
 }
 
-.wrapper div textarea {
+.txt_wrapper div textarea {
     width: 100%;
 }
 
-.wrapper div {
+.txt_wrapper div {
     position: relative;
 }
 
-.wrapper div span {
+.txt_wrapper div span {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -92,7 +117,8 @@ div span.displayError {
     align-items: center;
     justify-content: space-between;
 }
-.btns button{   
+
+.btns button {
     padding: 1rem 0;
     font-size: 1rem;
     background: #fff;
@@ -101,17 +127,17 @@ div span.displayError {
     margin: 15px 0;
     width: 32%;
     border: 1px solid transparent;
-    position: relative; 
-    box-shadow: 0 0 5px #aaa; 
+    position: relative;
+    box-shadow: 0 0 5px #aaa;
     transition: box-shadow 0.3s;
 }
 
 .btns button:hover {
-     box-shadow: 0 0 5px #888; 
+    box-shadow: 0 0 5px #888;
 }
 
-.btns button::before{
-    content:"";
+.btns button::before {
+    content: "";
     width: 20px;
     height: 20px;
     background: #646e9f;
@@ -122,14 +148,17 @@ div span.displayError {
     transform: translateY(-50%);
     color: #fff;
 }
-.btns button:nth-child(1)::before{
-    content:"3";
+
+.btns button:nth-child(1)::before {
+    content: "3";
 }
-.btns button:nth-child(2)::before{
-    content:"1";
+
+.btns button:nth-child(2)::before {
+    content: "1";
 }
-.btns button:nth-child(3)::before{
-    content:"2";
+
+.btns button:nth-child(3)::before {
+    content: "2";
 }
 
 a {
@@ -137,7 +166,7 @@ a {
     color: inherit;
 }
 
-.Spam_Keywords p{
+.Spam_Keywords p {
     background: #f9a3a3;
     padding: 15px;
     color: #232346;
@@ -147,12 +176,13 @@ a {
     display: none;
 }
 
-.Spam_Keywords p.visible{
+.Spam_Keywords p.visible {
     display: block;
 }
-.Spam_Keywords span{
-    padding:5px;
-    background-color:#eee;
+
+.Spam_Keywords span {
+    padding: 5px;
+    background-color: #eee;
     border-radius: 5px;
-    margin:0 5px;
+    margin: 0 5px;
 }

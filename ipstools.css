@@ -1,0 +1,28 @@
+.ips {
+    margin: 2rem auto;
+}
+
+.textareas{
+    display: flex;
+justify-content: center;
+}
+.textareas textarea {
+    width: 200px;
+    margin: 0 1rem 0 0;
+}
+
+.controls{
+    margin: 1rem 0;
+    display: flex   ;
+    justify-content: center;
+}
+
+
+.split{
+    padding: 5px 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
