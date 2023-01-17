@@ -1,0 +1,13 @@
+button{
+    display: block;
+}
+
+textarea{
+    resize:both;
+}
+
+table, tr, td,th{
+    border: 1px solid #aaa;
+    border-collapse: collapse;
+    padding: 5px 8px;
+}
