@@ -1,24 +1,38 @@
 .ips {
     margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    align-items: center;
+    justify-content: space-around;
+
 }
 
-.textareas{
-    display: flex;
-justify-content: center;
-}
+
 .textareas textarea {
-    width: 200px;
-    margin: 0 1rem 0 0;
+    margin: 1rem;
 }
 
-.controls{
+.controls {
     margin: 1rem 0;
-    display: flex   ;
     justify-content: center;
 }
 
+.controls div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
 
-.split{
+.controls div input {
+    width: 70%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    text-align: center;
+}
+
+button.split {
+    width: 100%;
     padding: 5px 1.5rem;
     font-size: 1rem;
     cursor: pointer;
