@@ -11,3 +11,27 @@ table, tr, td,th{
     border-collapse: collapse;
     padding: 5px 8px;
 }
+.w4-btns{
+    display: grid;
+    grid-template-columns: repeat(3,200px);
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem;
+}
+button {
+    padding: 1rem 0;
+    font-size: 1rem;
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    position: relative;
+    box-shadow: 0 0 5px #aaa;
+    transition: box-shadow 0.3s;
+}
+
+
+table{
+    display: inline-block;
+    margin: 2rem;
+}
