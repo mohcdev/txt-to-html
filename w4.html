@@ -4,6 +4,8 @@
 
 <head>
     <title>txt to html</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./w4.css">
 </head>
@@ -20,156 +22,44 @@
         </div>
     </nav>
     <section>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <textarea name="" id="" cols="30" rows="10" placeholder="past the content of the CSV file here!!"></textarea>
         <div class="w4-btns">
 
-            <button>Generate</button>
-            <button class="generate2">Generate 71 / 41</button>
+            <button id="btn_generate">Generate</button>
             <button class="fill">fill table</button>
-            <button class="table_bestbtn">table_best</button>
 
         </div>
-        <table class="table1">
-            <tr>
-                <th>deploy id</th>
-                <th>entity id</th>
-                <th>nbr lead</th>
-            </tr>
-            <tr>
+        <div class="tables">
 
-            </tr>
-        </table>
+            <table class="table1">
+                <thead>
+                    <tr>
+                        <th>deploy id</th>
+                        <th>entity id</th>
+                        <th>nbr lead</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-        <table class="table_best">
-            <tr>
-                <th>deploy id</th>
-                <th>entity id</th>
-                <th>nbr lead</th>
-            </tr>
-            <tr>
+                </tbody>
+            </table>
 
-            </tr>
-        </table>
+            <table class="table_best">
+                <thead>
+                    <tr>
+                        <th>deploy id</th>
+                        <th>entity id</th>
+                        <th>nbr lead</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
     </section>
-    <script>
-        const generate2 = document.querySelector('.generate2')
-        const tableBtn = document.querySelector('.fill')
-        const table_bestBtn = document.querySelector('.table_bestbtn')
-        const table1 = document.querySelector('.table1')
-        const table_best = document.querySelector('.table_best')
+    <script src="./w4.js">
 
-
-        let targetColumn = []
-
-        document.querySelector('button').addEventListener('click', () => {
-            console.log('123')
-            let data = document.querySelector('textarea').value.split('\n')
-
-            console.log(document.querySelector('textarea').value.split('\n')[8].split(','))
-            console.log(document.querySelector('textarea').value.split('\n')[8].split(',')[2])
-
-            targetColumn = []
-            for (let i = 8; i < data.length - 1; i++) {
-                targetColumn.push(data[i].split(',')[2])
-            }
-
-            console.log(targetColumn)
-        })
-        generate2.addEventListener('click', generate7141)
-        let array7141 = []
-        function generate7141() {
-
-
-            targetColumn.forEach(elem => {
-                let deploy = {
-                    deployId: null,
-                    entityId: null,
-                    count: 1
-                }
-                let foundState = {
-                    found: false,
-                    index: null
-                }
-                let deploy_ID = elem.substr(elem.search('_') + 1, 8)
-
-                if (elem.substr(-2, 2) == "71" || elem.substr(-2, 2) == "41") {
-                    console.log('generate7141')
-
-                    console.log(checkIfDeployExist(deploy_ID))
-                    foundState = checkIfDeployExist(deploy_ID)
-
-                    foundState.found ? array7141[foundState.index].count++ :
-                        (
-                            deploy.deployId = deploy_ID,
-                            deploy.entityId = elem.substr(-2, 2),
-                            array7141.push(deploy)
-                        )
-                }
-            });
-
-        }
-        function checkIfDeployExist(deployID) {
-            const deploy = {
-                found: false,
-                index: null
-            }
-
-            array7141.forEach((elem, i) => {
-                if (elem.deployId == deployID) {
-                    deploy.found = true
-                    deploy.index = i
-
-                }
-            })
-            return deploy
-        }
-
-
-        tableBtn.addEventListener('click', fillTable)
-        table_bestBtn.addEventListener('click', fillTable_best)
-
-        function fillTable() {
-            array7141.forEach(elem => {
-                let tr = document.createElement('tr')
-                let entityIdTd = document.createElement('td')
-                let deployIdTd = document.createElement('td')
-                let nbrLeadTd = document.createElement('td')
-
-                entityIdTd.textContent = elem.entityId
-                deployIdTd.textContent = elem.deployId
-                nbrLeadTd.textContent = elem.count
-
-                tr.appendChild(entityIdTd)
-                tr.appendChild(deployIdTd)
-                tr.appendChild(nbrLeadTd)
-
-                table1.appendChild(tr)
-
-            })
-        }
-
-        function fillTable_best() {
-            array7141.forEach(elem => {
-                if (elem.count >= 2) {
-
-                    let tr = document.createElement('tr')
-                    let entityIdTd = document.createElement('td')
-                    let deployIdTd = document.createElement('td')
-                    let nbrLeadTd = document.createElement('td')
-
-                    entityIdTd.textContent = elem.entityId
-                    deployIdTd.textContent = elem.deployId
-                    nbrLeadTd.textContent = elem.count
-
-                    tr.appendChild(entityIdTd)
-                    tr.appendChild(deployIdTd)
-                    tr.appendChild(nbrLeadTd)
-
-                    table_best.appendChild(tr)
-                }
-
-            })
-        }
     </script>
 </body>
 
