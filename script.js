@@ -40,13 +40,13 @@ const displayError = () => {
     err.classList.add('displayError')
 }
 
-const spamArray = [ 'Debt','Deal','millions','Offer','offers','credit','Discount',
+const spamArray = [ 'Debt','Deal','millions','offer','offers','credit','Discount',
 'Credit','Trial','Warranty','Unlimited','income','financial','Ad','ads','Prices','%','$',
 'Certified','Billing','Loans','performance','financial','Cheap','price','now','get',
 'call','today ','Extra','dollar','Billion','income','Cash','price','sales',
 'bucks','bonus','Cents','earn','Giveaway','gift','membership','investment', 'free',
 'refund','trial','sales','winner','profit','earnings','Prize','limited','freedom','money','earn', 'amazing', 'click', 'Weight','Bargain', 'thousands','opportunity', 'only',
-'action','now', 'success', 'great', 'life', 'off', 'all', 'human']
+'action','now','order','terms','debt','billionaire','finance', 'today', 'check','traffic','urgent','open' , 'claims','billing','medical',  'fast','insurance', 'lottery','member','million','Success','chance', 'deal','save','prize', 'success', 'won','leave','new','bank', 'loan','purchase','soon', 'great','£','per','costs','billion', 'guarantee','get','boss','buy', 'life', 'off', 'all', 'human','request','access', 'please', 'legal', 'important', 'you']
 
 let foundKeywords = []
 
@@ -91,7 +91,7 @@ removeBtn.addEventListener('click', () => {
     checkText()
 
     for (let i = 0; i < foundKeywords.length; i++) {
-        myTxt.value = myTxt.value.replaceAll(foundKeywords[i].value,'confirmation')
+        myTxt.value = myTxt.value.replaceAll(foundKeywords[i].value,'')
     }
 })
 
@@ -109,10 +109,8 @@ const foundSpamKeywords = (splitedTxt) => {
             keyword.value = splitedTxt[i]
             keyword.index = i
             foundKeywords.push(keyword)
-            console.log(keyword)
         }
     }
-    console.log(foundKeywords)
 }
 
 //check if the input field is not empty

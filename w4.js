@@ -12,8 +12,7 @@ btnGenerate.addEventListener('click', () => {
     targetColumn = []
     for (let i = 8; i < data.length - 1; i++) {
         targetColumn.push(data[i].split(',')[2])
-    }
-    console.log('generate')
+    } 
     setTimeout(generate7141, 3000)
 })
 
@@ -23,7 +22,7 @@ btnGenerate.addEventListener('click', () => {
 let resultOf7141 = []
 function generate7141() {
     resultOf7141 = []
-    console.log('generate7141')
+    console.log(targetColumn)
 
     targetColumn.forEach(elem => {
         let deploy = {
@@ -37,7 +36,7 @@ function generate7141() {
         }
         let deploy_ID = elem.substr(elem.search('_') + 1, 8)
 
-        if (elem.substr(-2, 2) == "71" || elem.substr(-2, 2) == "41") {
+        if (elem.substr(-2, 2) == "71" || elem.substr(-2, 2) == "41"|| elem.substr(-2, 2) == "26"|| elem.substr(-2, 2) == "27"|| elem.substr(-2, 2) == "28"|| elem.substr(-2, 2) == "32"|| elem.substr(-2, 2) == "43"|| elem.substr(-2, 2) == "68"|| elem.substr(-2, 2) == "76") {
             foundState = checkIfDeployExist(deploy_ID)
 
             foundState.found ? resultOf7141[foundState.index].count++ :
@@ -70,6 +69,8 @@ function checkIfDeployExist(deployID) {
 tableBtn.addEventListener('click', fillTable)
 
 function fillTable() {
+
+    console.log("fill table")
     resultOf7141.forEach(elem => {
         let tr = document.createElement('tr')
         let deployIdTd = document.createElement('td')
@@ -92,7 +93,6 @@ function fillTable() {
         }
         else
             table1.appendChild(tr)
-
     })
 }
 
