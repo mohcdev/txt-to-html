@@ -28,7 +28,11 @@
     </nav>
     <h1>Split Ips</h1>
     <section class="wrapper ips">
+        <div>
         <textarea name="" id="ips" placeholder="target ips" cols="30" rows="10"></textarea>
+        <span ></span>
+
+        </div> 
         <div class="controls">
             <div>
                 <label for="">Into&nbsp;:&nbsp;</label>
@@ -54,6 +58,7 @@
         let list4Textarea = document.querySelector('#list4')
         let list5Textarea = document.querySelector('#list5')
 
+targetIps.addEventListener('change', ()=> document.querySelector(' #ips+span').textContent = targetIps.value.split('\n').length)
         splitBtn.addEventListener('click', splitIps)
 
         let validIps = []
@@ -82,9 +87,7 @@
                     validIps.push(item)
                 }
             })
-
-            console.log(validIps.length)
-            console.log(validIps.length / splitInto.value)
+ 
 
             if (parseInt(splitInto.value) === 2) {
                 splitIntoTwo()
@@ -98,7 +101,10 @@
             if (parseInt(splitInto.value) === 5) {
                 splitIntoFive()
             }
-            
+            document.querySelectorAll('.textareas span').forEach(elem => {
+                elem.textContent = elem.previousElementSibling.value.split('\n').length-1
+            })
+              
 
         }
 
@@ -110,19 +116,25 @@
             //remove child textareas
             textareas.querySelectorAll('textarea').length >= 1 ? textareas.querySelectorAll('textarea').forEach(elem => textareas.removeChild(elem)) : null
 
+             textareas.querySelectorAll('.textareas span').length >= 1 ? textareas.querySelectorAll('span').forEach(elem => textareas.removeChild(elem)) : null
+
             for (let i = 0; i < nbr; i++) {
                 let textArea = document.createElement('textarea')
+                let span = document.createElement('span')
                 textArea.id = `list${i + 1}`
+
                 textareas.appendChild(textArea)
+                textareas.appendChild(span)
 
             }
+
             list1Textarea = document.querySelector('#list1')
             list2Textarea = document.querySelector('#list2')
             list3Textarea = document.querySelector('#list3')
             list4Textarea = document.querySelector('#list4')
             list5Textarea = document.querySelector('#list5')
 
-
+            textareas.querySelectorAll('textarea').forEach(txtArea => txtArea.addEventListener('click', e=> e.target.select()))
         }
 
         function splitIntoTwo() {
