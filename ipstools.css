@@ -9,9 +9,13 @@
 
 
 .textareas textarea {
-    margin: 1rem;
+    margin: 1rem; 
 }
-
+ .textareas span,  #ips span{ 
+ font-size: 11px; 
+    margin: -16px 0 0 1rem; 
+    display: block;
+ }
 .controls {
     margin: 1rem 0;
     justify-content: center;

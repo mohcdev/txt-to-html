@@ -28,7 +28,11 @@
     </nav>
     <h1>Split Ips</h1>
     <section class="wrapper ips">
+        <div>
         <textarea name="" id="ips" placeholder="target ips" cols="30" rows="10"></textarea>
+        <span ></span>
+
+        </div> 
         <div class="controls">
             <div>
                 <label for="">Into&nbsp;:&nbsp;</label>
@@ -54,6 +58,7 @@
         let list4Textarea = document.querySelector('#list4')
         let list5Textarea = document.querySelector('#list5')
 
+targetIps.addEventListener('change', ()=> document.querySelector(' #ips+span').textContent = targetIps.value.split('\n').length)
         splitBtn.addEventListener('click', splitIps)
 
         let validIps = []
@@ -82,9 +87,7 @@
                     validIps.push(item)
                 }
             })
-
-            console.log(validIps.length)
-            console.log(validIps.length / splitInto.value)
+ 
 
             if (parseInt(splitInto.value) === 2) {
                 splitIntoFunc(2)
@@ -98,6 +101,7 @@
             if (parseInt(splitInto.value) === 5) {
                 splitIntoFunc(5)
             }
+            
 
         }
 
@@ -109,10 +113,15 @@
             //remove child textareas
             textareas.querySelectorAll('textarea').length >= 1 ? textareas.querySelectorAll('textarea').forEach(elem => textareas.removeChild(elem)) : null
 
+             textareas.querySelectorAll('.textareas span').length >= 1 ? textareas.querySelectorAll('span').forEach(elem => textareas.removeChild(elem)) : null
+
             for (let i = 0; i < nbr; i++) {
                 let textArea = document.createElement('textarea')
+                let span = document.createElement('span')
                 textArea.id = `list${i + 1}`
+
                 textareas.appendChild(textArea)
+
             }
 
             list1Textarea = document.querySelector('#list1')
@@ -175,12 +184,7 @@
 
             console.log(list2Textarea)
 
-            
-            list1Textarea ? list1Textarea.value = list1 : null
-            list2Textarea ? list2Textarea.value = list2 : null
-            list3Textarea ? list3Textarea.value = list3 : null
-            list4Textarea ? list4Textarea.value = list4 : null
-            list5Textarea ? list5Textarea.value = list5 : null
+
         }
         //////---------------
         function splitIntoTwo() {
