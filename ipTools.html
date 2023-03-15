@@ -35,7 +35,7 @@
         </div> 
         <div class="controls">
             <div>
-                <label for="">Into&nbsp;:&nbsp;</label>
+                <label for="splitInto">Into&nbsp;:&nbsp;</label>
                 <input type="number" name="" id="splitInto" value="2" min="2" max="5">
             </div>
             <button class="split">Split</button>
@@ -101,13 +101,12 @@ targetIps.addEventListener('change', ()=> document.querySelector(' #ips+span').t
             if (parseInt(splitInto.value) === 5) {
                 splitIntoFunc(5)
             }
-            
+            document.querySelectorAll('.textareas span').forEach(elem => {
+                elem.textContent = elem.previousElementSibling.value.split('\n').length-1
+            })
 
         }
-
-        // list1Textarea.addEventListener('click', e => e.target.select())
-        // list2Textarea.addEventListener('click', e => e.target.select())
-
+  
         function createTextArea(nbr) {
 
             //remove child textareas
@@ -121,7 +120,7 @@ targetIps.addEventListener('change', ()=> document.querySelector(' #ips+span').t
                 textArea.id = `list${i + 1}`
 
                 textareas.appendChild(textArea)
-
+                textareas.appendChild(span)
             }
 
             list1Textarea = document.querySelector('#list1')
@@ -129,9 +128,12 @@ targetIps.addEventListener('change', ()=> document.querySelector(' #ips+span').t
             list3Textarea = document.querySelector('#list3')
             list4Textarea = document.querySelector('#list4')
             list5Textarea = document.querySelector('#list5')
+
+
+textareas.querySelectorAll('textarea').forEach(txtArea => txtArea.addEventListener('click', e=> e.target.select()))
+
         }
         //////---------------
-
         function splitIntoFunc(splitNbr) {
             validIps.forEach((element, index) => {
                 if (splitNbr === 2) {
@@ -180,85 +182,16 @@ targetIps.addEventListener('change', ()=> document.querySelector(' #ips+span').t
                     else
                         list5 += `${element}\n`
                 }
-            });
-
-            console.log(list2Textarea)
-
-
+            }); 
+            
+            list1Textarea ? list1Textarea.value = list1 : null
+            list2Textarea ? list2Textarea.value = list2 : null
+            list3Textarea ? list3Textarea.value = list3 : null
+            list4Textarea ? list4Textarea.value = list4 : null
+            list5Textarea ? list5Textarea.value = list5 : null
         }
         //////---------------
-        function splitIntoTwo() {
-            validIps.forEach((element, index) => {
-                if (index % 2 == 0) {
-                    list1 += `${element}\n`
-                }
-                else
-                    list2 += `${element}\n`
-            });
-
-            list1Textarea.value = list1
-            list2Textarea.value = list2
-        }
-        function splitIntoThree() {
-            validIps.forEach((element, index) => {
-                if (index % 3 == 0) {
-                    list1 += `${element}\n`
-                }
-                else if (index % 2 == 0) {
-                    list2 += `${element}\n`
-                }
-                else
-                    list3 += `${element}\n`
-            });
-
-            list1Textarea.value = list1
-            list2Textarea.value = list2
-            list3Textarea.value = list3
-        }
-        function splitIntoFour() {
-            validIps.forEach((element, index) => {
-                if (index % 4 == 0) {
-                    list1 += `${element}\n`
-                }
-                else if (index % 3 == 0) {
-                    list2 += `${element}\n`
-                }
-                else if (index % 2 == 0) {
-                    list3 += `${element}\n`
-                }
-                else
-                    list4 += `${element}\n`
-            });
-
-            list1Textarea.value = list1
-            list2Textarea.value = list2
-            list3Textarea.value = list3
-            list4Textarea.value = list4
-        }
-        function splitIntoFive() {
-            validIps.forEach((element, index) => {
-                if (index % 5 == 0) {
-                    list1 += `${element}\n`
-                }
-                else if (index % 4 == 0) {
-                    list2 += `${element}\n`
-                }
-                else if (index % 3 == 0) {
-                    list3 += `${element}\n`
-                }
-                else if (index % 2 == 0) {
-                    list4 += `${element}\n`
-                }
-                else
-                    list5 += `${element}\n`
-            });
-
-            list1Textarea.value = list1
-            list2Textarea.value = list2
-            list3Textarea.value = list3
-            list4Textarea.value = list4
-            list5Textarea.value = list5
-        } 
+      
     </script>
 </body>
 
