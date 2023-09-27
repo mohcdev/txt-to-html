@@ -8,6 +8,7 @@ const spamKeywordsContainer = document.querySelector('.Spam_Keywords')
 const nothingFound =  document.querySelector('.Spam_Keywords p')
 const spamBtn  = document.querySelector("#Spam")
 const removeBtn  = document.querySelector("#Remove")
+const RemoveEmpty  = document.querySelector("#Remove_empty")
 
 
 convertBtn.addEventListener('click', () => {
@@ -124,3 +125,12 @@ const checkText = () => {
 myTxt.addEventListener('change', ()=>{
     nothingFound.classList.remove('visible')
 })
+
+
+///RemoveEmpty
+
+RemoveEmpty.onclick = ()=>{
+    myHtml.value=''
+    console.log(myTxt.value.split('\n'))
+    myTxt.value.split('\n').forEach(ele => console.log(ele.trim() ? myHtml.value +=  `${ele}\n`  :null) ) 
+}

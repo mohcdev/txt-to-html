@@ -88,12 +88,13 @@ div span.displayError {
     background: #fff;
     border-radius: 5px;
     cursor: pointer;
-    margin: 15px 0;
-    width: 32%;
+    margin: 15px 5px;
+    width: 25%;
     border: 1px solid transparent;
     position: relative;
     box-shadow: 0 0 5px #aaa;
     transition: box-shadow 0.3s;
+    box-sizing: border-box;
 }
 
 .btns button:hover {
@@ -123,6 +124,9 @@ div span.displayError {
 
 .btns button:nth-child(3)::before {
     content: "2";
+}
+.btns button:nth-child(4)::before {
+    content: "4";
 }
 
 a {
