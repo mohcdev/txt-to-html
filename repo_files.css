@@ -12,12 +12,14 @@
 .links_repo {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-around; 
     border-radius: 10px;
-    padding: 1rem;
+    padding: 10px;
     margin: 10px 0;
 }
-
+.links_repo>a:nth-of-type(1) {
+    justify-self: center;
+}
 .repo_wrapper a {
     background: var(--main_color);
     padding: 5px 10px;
@@ -26,6 +28,7 @@
     text-transform: capitalize;
     font-weight: 600;
     box-shadow: 0 0 5px #ccc;
+    padding: 5px;
 }
 
 .repo_wrapper a:hover {
@@ -36,34 +39,33 @@ h2 {
     margin: 14px 0;
 }
 
-.cm7 .links_repo {
+.seventh .links_repo {
     box-shadow: 0 0 3px crimson;
 
 }
-.cm7 a {
+.seventh a {
     background-color: crimson;
 }
 
-.cm5 .links_repo {
+.fifth .links_repo {
     box-shadow: 0 0 3px var(--main_color);
 }
-.cm5 a {
+.fifth a {
     background-color: var(--main_color);
 }
 
-.cm3 .links_repo {
+.third .links_repo {
     box-shadow: 0 0 3px var(--purple);
 
 }
-.cm3 a {
+.third a {
     background-color: var(--purple);
 }
 
-.cm4 .links_repo {
+.fourth .links_repo {
     box-shadow: 0 0 3px var(--black);
-
 }
 
-.cm4 a {
+.fourth a {
     background-color: var(--black);
 }
